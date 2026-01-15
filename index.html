@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raige Tweak</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="scroll-float.js" defer></script>
+    <script src="logo-carousel.js" defer></script>
+    <script src="features-carousel.js" defer></script>
+    <script src="count-up.js" defer></script>
+    <script src="translations.js"></script>
+    <script src="i18n.js" defer></script>
+    <style>
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+        
+        .review-author > div:first-child {
+            flex-shrink: 0;
+        }
+        
+        .review-author > div:nth-child(2) {
+            flex: 1;
+        }
+        
+        .review-author .review-stars {
+            flex-shrink: 0;
+            margin-left: auto;
+        }
+        
+        .review-author .review-stars img {
+            height: 24px;
+            width: auto;
+        }
+        
+        .review-avatar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                        <div class="logo-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <h1>Raige Tweak</h1>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link" data-i18n="navOverview">Overview</a></li>
+                    <li><a href="#pricing" class="nav-link" data-i18n="navPricing">Pricing</a></li>
+                    <li><a href="#reviews" class="nav-link" data-i18n="navReviews">Reviews</a></li>
+                    <li><a href="https://discord.gg/g8WCEbQftH" class="nav-link" target="_blank" rel="noopener noreferrer" data-i18n="navHelp">Help</a></li>
+                    <li class="nav-dropdown">
+                        <details class="nav-details">
+                            <summary class="nav-link" data-i18n="navOther">Other</summary>
+                            <div class="nav-dropdown-menu">
+                                <a href="utility.html" class="nav-dropdown-link nav-dropdown-link--rich">
+                                    <span class="nav-dropdown-link-title">Free Utility Tweak</span>
+                                    <span class="nav-dropdown-link-subtitle">Free performance boost</span>
+                                </a>
+                            </div>
+                        </details>
+                    </li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="theme-icon theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h2 class="hero-title">
+                    <span class="title-ultimate shiny-text" data-i18n="heroTitleUltimate">Ultimate</span>
+                    <span class="title-performance shiny-text" data-i18n="heroTitlePerformance">Performance</span>
+                    <span class="title-subtitle shiny-text" data-i18n="heroTitleSubtitle">for any PC</span>
+                </h2>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">Transform your PC into a high-performance machine with advanced optimization algorithms.</p>
+                <a href="#pricing" class="hero-btn hero-btn-primary" aria-label="Explore Services">
+                    <svg class="hero-btn-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M11 4a7 7 0 015.3 11.7l4 4a1 1 0 01-1.4 1.4l-4-4A7 7 0 1111 4z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    Explore Services
+                </a>
+                <div class="hero-stats" aria-label="Stats">
+                    <div class="stat-chip">
+                        <span class="stat-value">150</span>
+                        <span class="stat-divider"></span>
+                        <span class="stat-label">PC Optimized</span>
+                    </div>
+                    <div class="stat-chip">
+                        <span class="stat-value">1K+</span>
+                        <span class="stat-divider"></span>
+                        <span class="stat-label">Tweaks Included</span>
+                    </div>
+                    <div class="stat-chip">
+                        <span class="stat-value">4.9</span>
+                        <span class="stat-divider"></span>
+                        <span class="stat-label">Avg Rating</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logo Carousel Section -->
+        <section class="logo-carousel-section">
+            <div class="logo-carousel">
+                <div class="logo-carousel-track">
+                    <div class="logo-item">
+                        <img src="https://i.ibb.co/21g85M0k/fortnite.png" alt="Fortnite">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://i.ibb.co/J4gTyyG/minecraft.png" alt="Minecraft">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://i.ibb.co/GQcPvk7y/rust.png" alt="Rust">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://i.ibb.co/fGSQN1YW/toppng-com-roblox-logo-2018-in-black-hd-transparent-png-3840x2160.png" alt="Roblox">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://i.ibb.co/S711y1Lg/CITYPNG-COM-HD-Valorant-Official-Text-Logo-PNG-5000x5000.png" alt="Valorant">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://i.ibb.co/1fKDBLjJ/warzone.png" alt="Warzone">
+                    </div>
+                    <div class="logo-item">
+                        <img src="https://i.ibb.co/S4VgW49y/Rocket-League-logo-svg-1.png" alt="Rocket League">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title" data-i18n="featuresTitle">Why Choose Raige Tweak?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/5xRNVvr4/rush.png" alt="Lightning Fast Performance" />
+                        </div>
+                        <h3 data-i18n="feature1Title">Lightning Fast Performance</h3>
+                        <p data-i18n="feature1Desc">Up to 40% faster system performance with advanced optimization algorithms.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/NdKXVByk/security.png" alt="Safe & Reliable" />
+                        </div>
+                        <h3 data-i18n="feature2Title">Safe & Reliable</h3>
+                        <p data-i18n="feature2Desc">All optimizations performed safely with automatic backups. Trusted by thousands worldwide.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/qLYCGYSZ/console.png" alt="Gaming Optimized" />
+                        </div>
+                        <h3 data-i18n="feature3Title">Gaming Optimized</h3>
+                        <p data-i18n="feature3Desc">Specialized optimizations for FPS improvement and reduced input lag.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/d0vD5nyN/clean.png" alt="Deep System Cleaning" />
+                        </div>
+                        <h3 data-i18n="feature4Title">Deep System Cleaning</h3>
+                        <p data-i18n="feature4Desc">Deep clean your system. Remove junk files, cache, and leftovers to free space and keep Windows responsive.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/jvzYbH86/arrow.png" alt="One-Click Optimization" />
+                        </div>
+                        <h3 data-i18n="feature5Title">One-Click Optimization</h3>
+                        <p data-i18n="feature5Desc">No technical knowledge required. Automatically identifies and fixes performance issues.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="https://i.ibb.co/8nCbgr68/refresh.png" alt="Regular Updates" />
+                        </div>
+                        <h3 data-i18n="feature6Title">Regular Updates</h3>
+                        <p data-i18n="feature6Desc">Continuous updates with new optimization techniques and enhanced features.</p>
+                    </div>
+                </div>
+
+                <div class="features-grid features-grid-trust">
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <img src="https://i.ibb.co/wF64H2WB/safe-home-svgrepo-com.png" alt="Safe to use" loading="lazy" draggable="false" />
+                        </div>
+                        <h3 data-i18n="trust1Title">Safe to use</h3>
+                        <p data-i18n="trust1Desc">Your system stays safe: every change is made carefully and can be rolled back if needed.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <img src="https://i.ibb.co/6R34FWyh/380491-1.png" alt="Windows 10/11" loading="lazy" draggable="false" />
+                        </div>
+                        <h3 data-i18n="trust2Title">Supports Windows 10/11</h3>
+                        <p data-i18n="trust2Desc">Fully compatible with Windows 10 and Windows 11. Works on laptops and desktops.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">
+                            <img src="https://i.ibb.co/QFT0fr42/boost-svgrepo-com.png" alt="Boost" loading="lazy" draggable="false" />
+                        </div>
+                        <h3 data-i18n="trust3Title">Remote optimization via AnyDesk</h3>
+                        <p data-i18n="trust3Desc">Raige Tweak is a service: we optimize your PC remotely using AnyDesk (not a standalone app).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing-section-main">
+            <div class="container">
+                <h2 class="section-title" data-i18n="pricingTitle">Choose Your Plan</h2>
+                <p class="pricing-subtitle" data-i18n="pricingSubtitle">Select the perfect optimization solution for your PC</p>
+                
+                <div class="pricing-container-main">
+                    <!-- PREMIUM Card -->
+                    <div class="card-container pricing-uiverse-card pricing-uiverse-card-premium">
+                        <div class="title-card">
+                            <p data-i18n="popularBadge">Popular</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M10.277 16.515c.005-.11.187-.154.24-.058c.254.45.686 1.111 1.177 1.412c.49.3 1.275.386 1.791.408c.11.005.154.186.058.24c-.45.254-1.111.686-1.412 1.176s-.386 1.276-.408 1.792c-.005.11-.187.153-.24.057c-.254-.45-.686-1.11-1.176-1.411s-1.276-.386-1.792-.408c-.11-.005-.153-.187-.057-.24c.45-.254 1.11-.686 1.411-1.177c.301-.49.386-1.276.408-1.791m8.215-1c-.008-.11-.2-.156-.257-.062c-.172.283-.421.623-.697.793s-.693.236-1.023.262c-.11.008-.155.2-.062.257c.283.172.624.42.793.697s.237.693.262 1.023c.009.11.2.155.258.061c.172-.282.42-.623.697-.792s.692-.237 1.022-.262c.11-.009.156-.2.062-.258c-.283-.172-.624-.42-.793-.697s-.236-.692-.262-1.022M14.704 4.002l-.242-.306c-.937-1.183-1.405-1.775-1.95-1.688c-.545.088-.806.796-1.327 2.213l-.134.366c-.149.403-.223.604-.364.752c-.143.148-.336.225-.724.38l-.353.141l-.248.1c-1.2.48-1.804.753-1.881 1.283c-.082.565.49 1.049 1.634 2.016l.296.25c.325.275.488.413.58.6c.094.187.107.403.134.835l.024.393c.093 1.52.14 2.28.634 2.542s1.108-.147 2.336-.966l.318-.212c.35-.233.524-.35.723-.381c.2-.032.402.024.806.136l.368.102c1.422.394 2.133.591 2.52.188c.388-.403.196-1.14-.19-2.613l-.099-.381c-.11-.419-.164-.628-.134-.835s.142-.389.365-.752l.203-.33c.786-1.276 1.179-1.914.924-2.426c-.254-.51-.987-.557-2.454-.648l-.379-.024c-.417-.026-.625-.039-.806-.135c-.18-.096-.314-.264-.58-.6m-5.869 9.324C6.698 14.37 4.919 16.024 4.248 18c-.752-4.707.292-7.747 1.965-9.637c.144.295.332.539.5.73c.35.396.852.82 1.362 1.251l.367.31l.17.145c.005.064.01.14.015.237l.03.485c.04.655.08 1.294.178 1.805" />
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <p class="title" data-i18n="premiumTitle">Premium Session</p>
+                            <p class="plain">
+                                <span>$<span class="count-up" data-from="0" data-to="25">25</span></span>
+                                <span data-i18n="oneTimePayment">One-Time Payment</span>
+                            </p>
+                            <ul class="pricing-uiverse-features">
+                                <li data-i18n="premiumFeature1">1000+ optimizations</li>
+                                <li data-i18n="premiumFeature2">System Cleanup Tools</li>
+                                <li data-i18n="premiumFeature3">Registry Optimization</li>
+                                <li data-i18n="premiumFeature4">Lifetime Updates</li>
+                                <li data-i18n="premiumFeature5">Email Support</li>
+                                <li data-i18n="premiumFeature6">Complete optimization suite</li>
+                            </ul>
+                            <button class="card-btn" onclick="window.location.href='https://buy.stripe.com/28EeVe3DCgI7cLBcUY57W05'">
+                                <span data-i18n="goPremium">Go Premium</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- ULTIMATE Card (Featured) -->
+                    <div class="card-container pricing-uiverse-card pricing-uiverse-card-ultimate">
+                        <div class="title-card">
+                            <p data-i18n="recommendedBadge">RECOMMENDED</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M10.277 16.515c.005-.11.187-.154.24-.058c.254.45.686 1.111 1.177 1.412c.49.3 1.275.386 1.791.408c.11.005.154.186.058.24c-.45.254-1.111.686-1.412 1.176s-.386 1.276-.408 1.792c-.005.11-.187.153-.24.057c-.254-.45-.686-1.11-1.176-1.411s-1.276-.386-1.792-.408c-.11-.005-.153-.187-.057-.24c.45-.254 1.11-.686 1.411-1.177c.301-.49.386-1.276.408-1.791m8.215-1c-.008-.11-.2-.156-.257-.062c-.172.283-.421.623-.697.793s-.693.236-1.023.262c-.11.008-.155.2-.062.257c.283.172.624.42.793.697s.237.693.262 1.023c.009.11.2.155.258.061c.172-.282.42-.623.697-.792s.692-.237 1.022-.262c.11-.009.156-.2.062-.258c-.283-.172-.624-.42-.793-.697s-.236-.692-.262-1.022M14.704 4.002l-.242-.306c-.937-1.183-1.405-1.775-1.95-1.688c-.545.088-.806.796-1.327 2.213l-.134.366c-.149.403-.223.604-.364.752c-.143.148-.336.225-.724.38l-.353.141l-.248.1c-1.2.48-1.804.753-1.881 1.283c-.082.565.49 1.049 1.634 2.016l.296.25c.325.275.488.413.58.6c.094.187.107.403.134.835l.024.393c.093 1.52.14 2.28.634 2.542s1.108-.147 2.336-.966l.318-.212c.35-.233.524-.35.723-.381c.2-.032.402.024.806.136l.368.102c1.422.394 2.133.591 2.52.188c.388-.403.196-1.14-.19-2.613l-.099-.381c-.11-.419-.164-.628-.134-.835s.142-.389.365-.752l.203-.33c.786-1.276 1.179-1.914.924-2.426c-.254-.51-.987-.557-2.454-.648l-.379-.024c-.417-.026-.625-.039-.806-.135c-.18-.096-.314-.264-.58-.6m-5.869 9.324C6.698 14.37 4.919 16.024 4.248 18c-.752-4.707.292-7.747 1.965-9.637c.144.295.332.539.5.73c.35.396.852.82 1.362 1.251l.367.31l.17.145c.005.064.01.14.015.237l.03.485c.04.655.08 1.294.178 1.805" />
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <p class="title" data-i18n="ultimateTitle">Ultra Session</p>
+                            <p class="plain">
+                                <span>$<span class="count-up" data-from="0" data-to="32">32</span></span>
+                                <span data-i18n="oneTimePayment">One-Time Payment</span>
+                            </p>
+                            <ul class="pricing-uiverse-features">
+                                <li data-i18n="ultimateFeature1">Everything in Premium</li>
+                                <li data-i18n="ultimateFeature2">Advanced Gaming Mode</li>
+                                <li data-i18n="ultimateFeature3">Priority Customer Support</li>
+                                <li data-i18n="ultimateFeature4">Exclusive Features</li>
+                                <li data-i18n="ultimateFeature5">Early Access Updates</li>
+                                <li data-i18n="ultimateFeature6">Advanced tweaks</li>
+                                <li data-i18n="ultimateFeature7">Complete optimization suite</li>
+                            </ul>
+                            <button class="card-btn" onclick="window.location.href='https://buy.stripe.com/4gMbJ2fmkezZbHx6wA57W06'">
+                                <span data-i18n="goUltimate">Go Ultimate</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2 class="faq-title" data-i18n="faqTitle">FREQUENTLY ASKED QUESTIONS</h2>
+                <p class="faq-subtitle" data-i18n="faqSubtitle">Find answers to the most common questions about Raige Tweak. Still need help? Join our Discord and a team member will be happy to assist you!</p>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span data-i18n="faq1Q">What is Raige Tweak?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p data-i18n="faq1A">Raige Tweak is a professional system optimization application designed to improve your PC's performance. It includes registry cleaning, startup management, memory optimization, and network acceleration tools to make your computer run faster and smoother.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span data-i18n="faq2Q">Can I reuse the optimization after resetting my PC?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p data-i18n="faq2A">No, after a PC reset you will need to purchase a new optimization session. However, we offer a 25% discount code for returning customers. Please open a support ticket on our Discord server to receive your discount code.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span data-i18n="faq3Q">What systems does Raige Tweak support?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p data-i18n="faq3A">Raige Tweak supports all modern Windows operating systems including Windows 10 and Windows 11. The application is compatible with 64-bit systems only.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span data-i18n="faq4Q">Will this increase my FPS and improve gaming performance?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p data-i18n="faq4A">Yes! Raige Tweak includes specialized gaming optimizations that can improve FPS, reduce input lag, and enhance overall gaming performance. Our gaming mode optimizes CPU, memory, and network settings specifically for gaming applications.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span data-i18n="faq5Q">Quelle est la différence entre Raige Tweak et Raige Tweak Ultra?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p data-i18n="faq5A">Les deux sont faits avec AnyDesk. Raige Tweak comprend l'optimisation de base + l'optimisation à distance via AnyDesk. Raige Tweak Ultra comprend tout de Raige Tweak, avec une optimisation système plus personnalisée/profonde, un support prioritaire 24/7 et des mises à jour à vie. C'est parfait pour les utilisateurs qui veulent les meilleurs résultats possibles avec l'aide d'experts.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span data-i18n="faq6Q">Is Raige Tweak safe to use?</span>
+                            <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="faq-answer">
+                            <p data-i18n="faq6A">Absolutely! Raige Tweak is completely safe. All optimizations are performed with automatic backups, and our proven technology has been trusted by thousands of users worldwide without any data loss incidents. Your data security is our top priority.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- License Validation Section (Only visible after purchase) -->
+        <section id="validate-license" class="validate-license-section" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Validate Your License Key</h2>
+                <p class="section-subtitle">Enter your license key to verify its validity</p>
+                <div class="license-validation-box">
+                    <div class="license-input-group">
+                        <input type="text" id="licenseKeyInput" placeholder="Enter your license key (e.g., RT-1703123456789-...)" class="license-input">
+                        <button onclick="validateLicenseKey()" class="btn-validate-license">Validate Key</button>
+                    </div>
+                    <div id="licenseValidationResult" class="license-validation-result"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section (Temporarily Disabled) -->
+        <section id="download" class="download-section hidden" style="display: none !important;">
+            <div class="container">
+                <h2 class="section-title">Download Raige Tweak</h2>
+                <p class="section-subtitle">Get started with the most powerful PC optimization tool</p>
+                <div class="download-box">
+                    <a href="#" id="downloadAppLink" class="btn-download" onclick="handleDownload(); return false;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Raige Tweak
+                    </a>
+                    <p class="download-note">After downloading, install the application and enter your license key when prompted.</p>
+                    <p class="download-help">Need help? Join our <a href="https://discord.gg/g8WCEbQftH" target="_blank" rel="noopener noreferrer" style="color: #ff0000; text-decoration: underline;">Discord Server</a> for support.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews">
+            <div class="container">
+                <h2 class="section-title" data-i18n="reviewsTitle">Reviews</h2>
+                <p class="reviews-subtitle" data-i18n="reviewsSubtitle">See what our users are saying about Raige Tweak</p>
+                
+                <div class="reviews-grid">
+                    <div class="review-card card-spotlight">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="review-avatar"><img src="https://i.ibb.co/xSb8MZLm/13854-dark-boy.png" alt="John Doe"></div>
+                                <div>
+                                    <h4>John Doe <img src="https://i.ibb.co/TD7fKwjB/a-Us-M5g6.png" alt="" style="height: 16px; margin-left: 8px; vertical-align: middle;"></h4>
+                                    <p class="review-role" data-i18n="reviewRoleGamer">Gamer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"Raige Tweak completely transformed my gaming experience! My FPS increased by 40% and the system runs so much smoother. Best investment I've made for my PC."</p>
+                    </div>
+
+                    <div class="review-card card-spotlight">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="review-avatar"><img src="https://i.ibb.co/fzD2D9zz/thumb-1920-368986.jpg" alt="Sarah Miller"></div>
+                                <div>
+                                    <h4>Sarah Miller <img src="https://i.ibb.co/TD7fKwjB/a-Us-M5g6.png" alt="" style="height: 16px; margin-left: 8px; vertical-align: middle;"></h4>
+                                    <p class="review-role" data-i18n="reviewRoleCreator">Content Creator</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"As a video editor, I need my PC to run at peak performance. Raige Tweak Ultra with the remote optimization was exactly what I needed. Professional service and amazing results!"</p>
+                    </div>
+
+                    <div class="review-card card-spotlight">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="review-avatar"><img src="https://i.ibb.co/jZwH8VNV/oggy-et-les-cafards-s03-e01-octopus-26381287-1731669869-1739ae-8f5de9-0-1x.jpg" alt="Mike Rodriguez"></div>
+                                <div>
+                                    <h4>Mike Rodriguez <img src="https://i.ibb.co/TD7fKwjB/a-Us-M5g6.png" alt="" style="height: 16px; margin-left: 8px; vertical-align: middle;"></h4>
+                                    <p class="review-role" data-i18n="reviewRoleDeveloper">Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"The one-click optimization is a game changer. My boot time went from 2 minutes to 30 seconds. The support team is also incredibly responsive. Highly recommended!"</p>
+                    </div>
+
+                    <div class="review-card card-spotlight">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="review-avatar"><img src="https://i.ibb.co/sJbRpzL8/25ed821abc5c0e59832ae7e5c744493d.jpg" alt="Alex Lee"></div>
+                                <div>
+                                    <h4>Alex Lee <img src="https://i.ibb.co/TD7fKwjB/a-Us-M5g6.png" alt="" style="height: 16px; margin-left: 8px; vertical-align: middle;"></h4>
+                                    <p class="review-role" data-i18n="reviewRoleStreamer">Streamer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"I was skeptical at first, but Raige Tweak delivered everything it promised. My stream quality improved significantly and I haven't experienced any lag since installing it."</p>
+                    </div>
+
+                    <div class="review-card card-spotlight">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="review-avatar"><img src="https://i.ibb.co/Kz9M01fC/yte6jcpc4tzq.jpg" alt="Emma Thompson"></div>
+                                <div>
+                                    <h4>Emma Thompson <img src="https://i.ibb.co/TD7fKwjB/a-Us-M5g6.png" alt="" style="height: 16px; margin-left: 8px; vertical-align: middle;"></h4>
+                                    <p class="review-role" data-i18n="reviewRoleStudent">Student</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"My laptop was so slow I couldn't even run basic programs. After using Raige Tweak, it feels like a brand new computer. The deep cleaning feature freed up 50GB of space!"</p>
+                    </div>
+
+                    <div class="review-card card-spotlight">
+                        <div class="review-header">
+                            <div class="review-author">
+                                <div class="review-avatar"><img src="https://i.ibb.co/BVHgvHby/e8f7fb3f8fd98dc6385b3bbb6fce21d7.jpg" alt="Chris Wilson"></div>
+                                <div>
+                                    <h4>Chris Wilson <img src="https://i.ibb.co/TD7fKwjB/a-Us-M5g6.png" alt="" style="height: 16px; margin-left: 8px; vertical-align: middle;"></h4>
+                                    <p class="review-role" data-i18n="reviewRoleCreator">Content Creator</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="review-text">"The registry optimization and startup management features are incredible. My PC starts instantly and all programs load much faster. Worth every penny!"</p>
+                    </div>
+                </div>
+
+                <div class="discord-widget-container">
+                    <h3 class="discord-title" data-i18n="discordTitle">Join Our Discord Community</h3>
+                    <p class="discord-subtitle" data-i18n="discordSubtitle">Get support, share feedback, and connect with other Raige Tweak users</p>
+                    <div class="discord-widget">
+                        <iframe src="https://discord.com/widget?id=1443699084723617867&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo-section">
+                <div class="footer-logo-container">
+                    <div class="footer-logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3 class="footer-logo-text">Raige Tweak</h3>
+                </div>
+                <div class="footer-language-selector">
+                    <label data-i18n="languageSelector">Language</label>
+                    <div class="language-select-wrapper">
+                        <button class="lang-trigger" id="langTrigger" type="button">
+                            <img id="selectedFlag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png" alt="Flag" class="flag-icon">
+                            <span id="selectedLanguage">English (EN)</span>
+                            <svg class="language-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <ul class="lang-menu" id="langMenu">
+                            <li class="lang-menu-item" data-value="en">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png" alt="English" class="flag-icon">
+                                <span>English (United States)</span>
+                                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </li>
+                            <li class="lang-menu-item" data-value="fr">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Flag_of_France.png" alt="Français" class="flag-icon">
+                                <span>Français (France)</span>
+                                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </li>
+                            <li class="lang-menu-item" data-value="es">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/960px-Flag_of_Spain.svg.png" alt="Español" class="flag-icon">
+                                <span>Español (España)</span>
+                                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </li>
+                            <li class="lang-menu-item" data-value="ar">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/800px-Flag_of_Saudi_Arabia.svg.png" alt="العربية" class="flag-icon">
+                                <span>العربية (السعودية)</span>
+                                <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <nav class="footer-nav">
+                    <a href="#home" class="footer-nav-link" data-i18n="footerOverview">Overview</a>
+                    <a href="#features" class="footer-nav-link" data-i18n="footerFeatures">Features</a>
+                    <a href="#pricing" class="footer-nav-link" data-i18n="footerPricing">Pricing</a>
+                    <a href="https://discord.gg/g8WCEbQftH" class="footer-nav-link" target="_blank" rel="noopener noreferrer" data-i18n="footerDiscord">Discord</a>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright" data-i18n="footerCopyright">&copy; 2026 Raige Tweak. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="terms-of-service.html" class="footer-legal-link" data-i18n="footerTerms">Terms</a>
+                <a href="privacy-policy.html" class="footer-legal-link" data-i18n="footerPrivacy">Privacy</a>
+                <a href="license-agreement.html" class="footer-legal-link" data-i18n="footerLicense">License</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://discord.gg/dRRCQcD2Aw" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord">
+                    <img src="https://i.ibb.co/wNVdb2VY/discord-server-logo-1.png" alt="Discord">
+                </a>
+                <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+                    <img src="https://i.ibb.co/6ck751Lf/Youtube-logo.png" alt="YouTube">
+                </a>
+            </div>
+        </div>
+        <div id="userLicenseDisplay" class="user-license-display" style="display: none; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center;">
+            <p style="margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Your License Key:</p>
+            <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                <code id="displayLicenseKey" style="background: rgba(255, 255, 255, 0.1); padding: 0.5rem 1rem; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.9rem; word-break: break-all;"></code>
+                <button onclick="copyUserLicenseKey()" style="background: rgba(255, 0, 0, 0.2); border: 1px solid rgba(255, 0, 0, 0.5); color: #fff; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem; transition: all 0.3s;">Copy</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+            </div>
+            <h3>Processing Purchase...</h3>
+            <p>Please complete your payment in the new window.<br><small style="opacity: 0.8; margin-top: 0.5rem; display: block;">⚠️ Session expires in 30 minutes</small></p>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <h2 id="modalProductName"></h2>
+            <p class="modal-price">$<span id="modalPrice"></span></p>
+            <div class="payment-options">
+                <div class="payment-method">
+                    <h3>Pay with Stripe</h3>
+                    <button id="stripeButton" class="btn-payment stripe-btn">Pay with Card</button>
+                </div>
+                <div class="payment-divider">
+                    <span>or</span>
+                </div>
+                <div class="payment-method">
+                    <h3>Pay with PayPal</h3>
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+      // ✅ Lenis Smooth Scrolling (activation)
+      window.addEventListener("load", () => {
+        const lenis = new Lenis({
+          duration: 1.2,
+          smoothWheel: true,
+          smoothTouch: false,
+          wheelMultiplier: 1
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // ✅ Smooth scroll sur les ancres (#home, #pricing, etc.)
+        document.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener("click", (e) => {
+            const id = a.getAttribute("href");
+            if (!id || id === "#") return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            lenis.scrollTo(target);
+          });
+        });
+      });
+    </script>
+    <script src="script.js"></script>
+    <script src="nav-dropdown.js"></script>
+    <script>
+        // Prevent image copying, dragging, and right-click
+        document.addEventListener('DOMContentLoaded', function() {
+            // Disable right-click on images
+            document.addEventListener('contextmenu', function(e) {
+                if (e.target.tagName === 'IMG' || e.target.tagName === 'SVG' || e.target.closest('svg')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Disable drag on images
+            document.addEventListener('dragstart', function(e) {
+                if (e.target.tagName === 'IMG' || e.target.tagName === 'SVG' || e.target.closest('svg')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Disable image selection
+            document.addEventListener('selectstart', function(e) {
+                if (e.target.tagName === 'IMG' || e.target.tagName === 'SVG' || e.target.closest('svg')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // Disable copy (Ctrl+C, Cmd+C)
+            document.addEventListener('copy', function(e) {
+                if (window.getSelection().toString().length > 0) {
+                    const selection = window.getSelection().toString();
+                    // Allow text copy but prevent image copy
+                    if (e.target.tagName === 'IMG' || e.target.tagName === 'SVG' || e.target.closest('svg')) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        // Theme Toggle System with Instant Windows Detection
+        (function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            let userHasManuallySet = false;
+            
+            // Detect system preference instantly
+            function detectSystemTheme() {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    return 'light';
+                }
+                return 'dark';
+            }
+            
+            // Get saved theme or detect system preference
+            function getInitialTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme) {
+                    userHasManuallySet = true;
+                    return savedTheme;
+                }
+                // Detect system preference instantly
+                return detectSystemTheme();
+            }
+            
+            // Apply theme instantly (no transition delay)
+            function setTheme(theme, skipAnimation = false) {
+                // Disable all transitions temporarily for instant change
+                if (skipAnimation) {
+                    const style = document.createElement('style');
+                    style.id = 'theme-transition-disable';
+                    style.textContent = `
+                        *,
+                        *::before,
+                        *::after {
+                            transition: none !important;
+                            animation: none !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    html.setAttribute('data-theme', theme);
+                    
+                    // Re-enable transitions after a brief moment
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            const disableStyle = document.getElementById('theme-transition-disable');
+                            if (disableStyle) {
+                                disableStyle.remove();
+                            }
+                        });
+                    });
+                } else {
+                    // For manual changes, disable transitions briefly
+                    const style = document.createElement('style');
+                    style.id = 'theme-transition-disable';
+                    style.textContent = `
+                        *,
+                        *::before,
+                        *::after {
+                            transition: none !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    html.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                    userHasManuallySet = true;
+                    
+                    // Re-enable transitions after theme is applied
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            const disableStyle = document.getElementById('theme-transition-disable');
+                            if (disableStyle) {
+                                disableStyle.remove();
+                            }
+                        });
+                    });
+                }
+            }
+            
+            // Initialize theme instantly on page load
+            const initialTheme = getInitialTheme();
+            setTheme(initialTheme, true);
+            
+            // Toggle theme on button click with flip animation
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = html.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    
+                    // Disable transitions immediately
+                    const style = document.createElement('style');
+                    style.id = 'theme-transition-disable';
+                    style.textContent = `
+                        *,
+                        *::before,
+                        *::after {
+                            transition: none !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                    
+                    // Change theme instantly
+                    html.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    userHasManuallySet = true;
+                    
+                    // Add flip animation to button only
+                    themeToggle.classList.add('flipping');
+                    
+                    // Re-enable transitions after theme is applied
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            const disableStyle = document.getElementById('theme-transition-disable');
+                            if (disableStyle) {
+                                disableStyle.remove();
+                            }
+                        });
+                    });
+                    
+                    // Remove animation class after animation completes
+                    setTimeout(() => {
+                        themeToggle.classList.remove('flipping');
+                    }, 700);
+                });
+            }
+            
+            // Listen for system theme changes - INSTANT update
+            if (window.matchMedia) {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+                
+                // Instant detection on load
+                const handleThemeChange = (e) => {
+                    // Only auto-switch if user hasn't manually set a preference
+                    if (!userHasManuallySet) {
+                        const newTheme = e.matches ? 'light' : 'dark';
+                        setTheme(newTheme, true); // Instant change
+                    }
+                };
+                
+                // Listen for changes
+                if (mediaQuery.addEventListener) {
+                    mediaQuery.addEventListener('change', handleThemeChange);
+                } else {
+                    // Fallback for older browsers
+                    mediaQuery.addListener(handleThemeChange);
+                }
+                
+                // Also check immediately in case it changed while page was loading
+                handleThemeChange(mediaQuery);
+            }
+        })();
+        
+        // FAQ Toggle Function
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const allFaqItems = document.querySelectorAll('.faq-item');
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            allFaqItems.forEach(item => {
+                item.classList.remove('active');
+                const icon = item.querySelector('.faq-icon');
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+                const icon = faqItem.querySelector('.faq-icon');
+                if (icon) {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

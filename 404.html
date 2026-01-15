@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 - Page Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000;
+      --bg2: #0a0000;
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.6);
+      --border: rgba(255, 255, 255, 0.1);
+      --panel: rgba(255, 255, 255, 0.03);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 900px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 24px;
+      padding: 2.25rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand .icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brand .name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand .name strong {
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .brand .name span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .content {
+      display: grid;
+      gap: 1.25rem;
+      text-align: center;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .canvas-wrap {
+      width: 100%;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.35);
+      padding: 1.5rem 1rem;
+    }
+
+    canvas {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      cursor: default;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 0.25rem;
+    }
+
+    .btn {
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .hint {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    [data-theme="light"] body {
+      background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    [data-theme="light"] .wrap {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    [data-theme="light"] .brand .name span,
+    [data-theme="light"] .subtitle {
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    [data-theme="light"] .canvas-wrap {
+      background: rgba(0, 0, 0, 0.04);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    [data-theme="light"] .btn {
+      background: rgba(0, 0, 0, 0.06);
+      border-color: rgba(0, 0, 0, 0.14);
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    [data-theme="light"] .btn:hover {
+      background: rgba(0, 0, 0, 0.08);
+      border-color: rgba(0, 0, 0, 0.22);
+    }
+
+    [data-theme="light"] .hint {
+      color: rgba(0, 0, 0, 0.45);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="index.html">
+        <div class="icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <div class="name">
+          <strong>RAIGE TWEAK</strong>
+          <span>Page not found</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="content">
+      <div class="canvas-wrap">
+        <canvas id="fuzzyCanvas" aria-label="404"></canvas>
+      </div>
+      <p class="subtitle">The page you’re looking for doesn’t exist or was moved.</p>
+      <div class="actions">
+        <a class="btn" href="index.html">Back Home</a>
+        <a class="btn" href="index.html#pricing">Pricing</a>
+      </div>
+      <p class="hint">Tip: move your mouse over the “404” to intensify the effect.</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById('fuzzyCanvas');
+      if (!canvas) return;
+
+      const enableHover = true;
+      const baseIntensity = 0.18;
+      const hoverIntensity = 0.5;
+      const text = '404';
+      const fontWeight = 900;
+      const fuzzRange = 30;
+
+      const loadTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        const systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        const theme = savedTheme || systemTheme;
+        document.documentElement.setAttribute('data-theme', theme);
+        return theme;
+      };
+
+      const theme = loadTheme();
+
+      const getColor = () => {
+        const t = document.documentElement.getAttribute('data-theme');
+        return t === 'light' ? 'rgba(0,0,0,0.92)' : 'rgba(255,255,255,0.92)';
+      };
+
+      const getComputedFontFamily = () => {
+        const computed = window.getComputedStyle(document.body).fontFamily;
+        return computed || 'sans-serif';
+      };
+
+      const computeFontSizePx = () => {
+        const vw = Math.max(320, Math.min(window.innerWidth, 1200));
+        const size = Math.max(96, Math.min(220, vw * 0.22));
+        return Math.round(size);
+      };
+
+      let isHovering = false;
+      let raf = null;
+      let cleanupFns = [];
+
+      const setup = async () => {
+        if (document.fonts && document.fonts.ready) {
+          try {
+            await document.fonts.ready;
+          } catch (_) {}
+        }
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const fontSizePx = computeFontSizePx();
+        const fontFamily = getComputedFontFamily();
+        const color = getColor();
+
+        const offscreen = document.createElement('canvas');
+        const offCtx = offscreen.getContext('2d');
+        if (!offCtx) return;
+
+        const fontSizeStr = `${fontSizePx}px`;
+        offCtx.font = `${fontWeight} ${fontSizeStr} ${fontFamily}`;
+        offCtx.textBaseline = 'alphabetic';
+        const metrics = offCtx.measureText(text);
+
+        const actualLeft = metrics.actualBoundingBoxLeft ?? 0;
+        const actualRight = metrics.actualBoundingBoxRight ?? metrics.width;
+        const actualAscent = metrics.actualBoundingBoxAscent ?? fontSizePx;
+        const actualDescent = metrics.actualBoundingBoxDescent ?? fontSizePx * 0.2;
+
+        const textBoundingWidth = Math.ceil(actualLeft + actualRight);
+        const tightHeight = Math.ceil(actualAscent + actualDescent);
+
+        const extraWidthBuffer = 10;
+        const offscreenWidth = textBoundingWidth + extraWidthBuffer;
+
+        offscreen.width = offscreenWidth;
+        offscreen.height = tightHeight;
+
+        const xOffset = extraWidthBuffer / 2;
+        offCtx.font = `${fontWeight} ${fontSizeStr} ${fontFamily}`;
+        offCtx.textBaseline = 'alphabetic';
+        offCtx.fillStyle = color;
+        offCtx.fillText(text, xOffset - actualLeft, actualAscent);
+
+        const horizontalMargin = 50;
+        const verticalMargin = 0;
+        canvas.width = offscreenWidth + horizontalMargin * 2;
+        canvas.height = tightHeight + verticalMargin * 2;
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.translate(horizontalMargin, verticalMargin);
+
+        const interactiveLeft = horizontalMargin + xOffset;
+        const interactiveTop = verticalMargin;
+        const interactiveRight = interactiveLeft + textBoundingWidth;
+        const interactiveBottom = interactiveTop + tightHeight;
+
+        const clear = () => {
+          ctx.clearRect(-fuzzRange, -fuzzRange, offscreenWidth + 2 * fuzzRange, tightHeight + 2 * fuzzRange);
+        };
+
+        const isInsideTextArea = (x, y) => x >= interactiveLeft && x <= interactiveRight && y >= interactiveTop && y <= interactiveBottom;
+
+        const handleMouseMove = e => {
+          if (!enableHover) return;
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          isHovering = isInsideTextArea(x, y);
+        };
+
+        const handleMouseLeave = () => {
+          isHovering = false;
+        };
+
+        const handleTouchMove = e => {
+          if (!enableHover) return;
+          e.preventDefault();
+          const rect = canvas.getBoundingClientRect();
+          const touch = e.touches[0];
+          const x = touch.clientX - rect.left;
+          const y = touch.clientY - rect.top;
+          isHovering = isInsideTextArea(x, y);
+        };
+
+        const handleTouchEnd = () => {
+          isHovering = false;
+        };
+
+        if (enableHover) {
+          canvas.addEventListener('mousemove', handleMouseMove);
+          canvas.addEventListener('mouseleave', handleMouseLeave);
+          canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+          canvas.addEventListener('touchend', handleTouchEnd);
+          cleanupFns.push(() => {
+            canvas.removeEventListener('mousemove', handleMouseMove);
+            canvas.removeEventListener('mouseleave', handleMouseLeave);
+            canvas.removeEventListener('touchmove', handleTouchMove);
+            canvas.removeEventListener('touchend', handleTouchEnd);
+          });
+        }
+
+        const run = () => {
+          clear();
+          const intensity = isHovering ? hoverIntensity : baseIntensity;
+          for (let j = 0; j < tightHeight; j++) {
+            const dx = Math.floor(intensity * (Math.random() - 0.5) * fuzzRange);
+            ctx.drawImage(offscreen, 0, j, offscreenWidth, 1, dx, j, offscreenWidth, 1);
+          }
+          raf = window.requestAnimationFrame(run);
+        };
+
+        run();
+      };
+
+      const teardown = () => {
+        if (raf) {
+          window.cancelAnimationFrame(raf);
+          raf = null;
+        }
+        cleanupFns.forEach(fn => fn());
+        cleanupFns = [];
+      };
+
+      setup();
+
+      window.addEventListener('resize', () => {
+        teardown();
+        setup();
+      });
+
+      window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').addEventListener?.('change', () => {
+        teardown();
+        setup();
+      });
+
+      window.addEventListener('storage', e => {
+        if (e.key === 'theme') {
+          loadTheme();
+          teardown();
+          setup();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

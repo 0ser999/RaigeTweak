@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Utility Tweak - Raige Tweak</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="count-up.js" defer></script>
+    <script src="translations.js"></script>
+    <script src="i18n.js" defer></script>
+    <script src="utility.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                        <div class="logo-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <h1>Raige Tweak</h1>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home" class="nav-link" data-i18n="navOverview">Overview</a></li>
+                    <li><a href="index.html#pricing" class="nav-link" data-i18n="navPricing">Pricing</a></li>
+                    <li><a href="index.html#reviews" class="nav-link" data-i18n="navReviews">Reviews</a></li>
+                    <li class="nav-dropdown">
+                        <details class="nav-details">
+                            <summary class="nav-link" data-i18n="navOther">Other</summary>
+                            <div class="nav-dropdown-menu">
+                                <a href="utility.html" class="nav-dropdown-link nav-dropdown-link--rich">
+                                    <span class="nav-dropdown-link-title">Free Utility Tweak</span>
+                                    <span class="nav-dropdown-link-subtitle">Free performance boost</span>
+                                </a>
+                            </div>
+                        </details>
+                    </li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <svg class="theme-icon theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="utility-hero">
+            <div class="container">
+                <div class="utility-card">
+                    <h2 class="utility-title">Free Utility Tweak</h2>
+                    <p class="utility-subtitle">A lightweight utility pack to boost responsiveness and clean up common performance bottlenecks. One click, instant results.</p>
+                    <div class="utility-actions">
+                        <a id="utilityDownloadBtn" href="#" class="hero-btn hero-btn-primary" aria-label="Download Free Utility Tweak">
+                            <svg class="hero-btn-icon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 3v10m0 0l4-4m-4 4l-4-4M5 21h14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                            Download
+                        </a>
+                        <a href="index.html" class="hero-btn" style="background: transparent; color: inherit; border: 1px solid rgba(255, 255, 255, 0.18);">Back to Home</a>
+                    </div>
+                    <div class="utility-counter">
+                        <div class="utility-counter-chip" aria-label="Total installations">
+                            <span class="utility-counter-value" id="utilityInstallCount">0</span>
+                            <span class="stat-divider"></span>
+                            <span class="stat-label">Total installs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo-section">
+                <div class="footer-logo-container">
+                    <div class="footer-logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3 class="footer-logo-text">Raige Tweak</h3>
+                </div>
+                <nav class="footer-nav">
+                    <a href="index.html#home" class="footer-nav-link" data-i18n="footerOverview">Overview</a>
+                    <a href="index.html#features" class="footer-nav-link" data-i18n="footerFeatures">Features</a>
+                    <a href="index.html#pricing" class="footer-nav-link" data-i18n="footerPricing">Pricing</a>
+                    <a href="utility.html" class="footer-nav-link">Free Utility</a>
+                </nav>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 Raige Tweak. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="terms-of-service.html" class="footer-legal-link" data-i18n="footerTerms">Terms</a>
+                <a href="privacy-policy.html" class="footer-legal-link" data-i18n="footerPrivacy">Privacy</a>
+                <a href="license-agreement.html" class="footer-legal-link" data-i18n="footerLicense">License</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://discord.gg/dRRCQcD2Aw" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Discord">
+                    <img src="https://i.ibb.co/wNVdb2VY/discord-server-logo-1.png" alt="Discord">
+                </a>
+                <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube">
+                    <img src="https://i.ibb.co/6ck751Lf/Youtube-logo.png" alt="YouTube">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="nav-dropdown.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+      // ✅ Lenis Smooth Scrolling (activation)
+      window.addEventListener("load", () => {
+        const lenis = new Lenis({
+          duration: 1.2,
+          smoothWheel: true,
+          smoothTouch: false,
+          wheelMultiplier: 1
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // ✅ Smooth scroll sur les ancres (#home, #pricing, etc.)
+        document.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener("click", (e) => {
+            const id = a.getAttribute("href");
+            if (!id || id === "#") return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            lenis.scrollTo(target);
+          });
+        });
+      });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Policy - Raige Tweak</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="translations.js"></script>
+    <script src="i18n.js" defer></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .legal-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            color: #ffffff;
+        }
+        .legal-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .legal-header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        @keyframes legal-title-shine {
+            0% {
+                background-position: 100% 0;
+            }
+            100% {
+                background-position: -100% 0;
+            }
+        }
+        .legal-header p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .legal-content {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 3rem;
+            line-height: 1.8;
+        }
+        .legal-content h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        .legal-content h2:first-child {
+            margin-top: 0;
+        }
+        .legal-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .legal-content p {
+            margin-bottom: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .legal-content ul, .legal-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .legal-content li {
+            margin-bottom: 0.8rem;
+        }
+        .legal-content strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .warning-box {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .warning-box strong {
+            color: #ff0000;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        .back-link:hover {
+            opacity: 0.8;
+        }
+        .last-updated {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        .legal-content a {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            cursor: pointer;
+            display: inline-block;
+            padding: 2px 4px;
+            margin: -2px -4px;
+            transition: all 0.3s ease;
+        }
+        .legal-content a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        .legal-content li a {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+            display: inline-block;
+            min-height: 24px;
+            line-height: 24px;
+        }
+        .legal-content ul[style] li a {
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
+        .legal-content ul[style] li {
+            position: relative;
+            padding: 4px 0;
+        }
+        .legal-content ul[style] li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .legal-content ul[style] li a {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                        <div class="logo-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <h1>Raige Tweak</h1>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home" class="nav-link" data-i18n="navOverview">Overview</a></li>
+                    <li><a href="https://discord.gg/g8WCEbQftH" class="nav-link" target="_blank" rel="noopener noreferrer" data-i18n="navHelp">Help</a></li>
+                    <li><a href="index.html#pricing" class="nav-link" data-i18n="navPricing">Pricing</a></li>
+                    <li><a href="index.html#reviews" class="nav-link" data-i18n="navReviews">Reviews</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="legal-container">
+        <div class="legal-header">
+            <h1 style="background: linear-gradient(120deg, rgba(255, 255, 255, 0.55) 40%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0.55) 60%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: legal-title-shine 2.5s linear infinite;">Refund Policy</h1>
+            <p>Information about refunds and returns for Raige Tweak</p>
+        </div>
+
+        <div class="legal-content">
+            <p><strong>Last Updated:</strong> <span id="lastUpdated"></span></p>
+
+            <div class="warning-box">
+                <p><strong>Important:</strong> All sales of Raige Tweak software are final. We do not offer refunds for purchased licenses unless required by law or in exceptional circumstances as outlined below.</p>
+            </div>
+
+            <h2>1. No Refund Policy</h2>
+            <p>Due to the digital nature of our software and the immediate delivery of license keys upon purchase, we maintain a strict no-refund policy. Once a license key has been generated and delivered, the sale is considered final.</p>
+
+            <h2>2. Exceptions</h2>
+            <p>Refunds may be considered in the following exceptional circumstances:</p>
+            <ul>
+                <li><strong>Duplicate Purchase:</strong> If you accidentally purchase the same product twice, we will refund one of the purchases.</li>
+                <li><strong>Technical Issues:</strong> If the software is completely non-functional due to a technical issue on our end that cannot be resolved.</li>
+                <li><strong>Unauthorized Purchase:</strong> If your payment method was used without your authorization, contact us immediately.</li>
+            </ul>
+
+            <h2>3. Refund Request Process</h2>
+            <p>If you believe you qualify for a refund under the exceptions listed above, please:</p>
+            <ol>
+                <li>Contact us at <strong>support@raigetweak.com</strong> within 7 days of purchase</li>
+                <li>Provide your order number or license key</li>
+                <li>Explain the reason for your refund request</li>
+                <li>Include any relevant documentation or screenshots</li>
+            </ol>
+            <p>We will review your request and respond within 5-7 business days.</p>
+
+            <h2>4. Refund Processing</h2>
+            <p>If your refund is approved:</p>
+            <ul>
+                <li>Refunds will be processed to the original payment method</li>
+                <li>Processing may take 5-10 business days</li>
+                <li>Your license key will be deactivated</li>
+                <li>You must stop using the software immediately</li>
+            </ul>
+
+            <h2>5. Chargebacks</h2>
+            <p>If you initiate a chargeback through your payment provider without first contacting us, we reserve the right to:</p>
+            <ul>
+                <li>Permanently ban your account</li>
+                <li>Deactivate all associated license keys</li>
+                <li>Dispute the chargeback with supporting documentation</li>
+            </ul>
+
+            <h2>6. Subscription Cancellations</h2>
+            <p>If you have a subscription (if applicable in the future), you may cancel at any time. Cancellation will take effect at the end of your current billing period. No refunds will be provided for the current billing period.</p>
+
+            <h2>7. Free Trial Period</h2>
+            <p>If we offer a free trial period in the future, you may cancel before the trial ends to avoid charges. No refunds are provided for free trial periods.</p>
+
+            <h2>8. Contact Us</h2>
+            <p>For refund inquiries, please contact us at:</p>
+            <p><strong>Email:</strong> support@raigetweak.com</p>
+            <p><strong>Subject:</strong> Refund Request - [Your Order Number]</p>
+
+            <h2>9. Changes to This Policy</h2>
+            <p>We reserve the right to modify this Refund Policy at any time. Changes will be effective immediately upon posting on this page.</p>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p style="margin-bottom: 1rem;"><strong>Related Documents:</strong></p>
+                <ul style="list-style: none; margin-left: 0;">
+                    <li style="margin-bottom: 0.5rem;"><a href="legal.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">← Legal Information</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="privacy-policy.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">Privacy Policy</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="terms-of-service.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">Terms of Service</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="license-agreement.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">License Agreement</a></li>
+                    <li style="margin-top: 1rem;"><a href="index.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">← Back to Home</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="last-updated">
+            Last updated: <span id="lastUpdatedFooter"></span>
+        </div>
+    </div>
+
+    <script>
+        const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        document.getElementById('lastUpdated').textContent = date;
+        document.getElementById('lastUpdatedFooter').textContent = date;
+    </script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+      // ✅ Lenis Smooth Scrolling (activation)
+      window.addEventListener("load", () => {
+        const lenis = new Lenis({
+          duration: 1.2,
+          smoothWheel: true,
+          smoothTouch: false,
+          wheelMultiplier: 1
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // ✅ Smooth scroll sur les ancres (#home, #pricing, etc.)
+        document.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener("click", (e) => {
+            const id = a.getAttribute("href");
+            if (!id || id === "#") return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            lenis.scrollTo(target);
+          });
+        });
+      });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+

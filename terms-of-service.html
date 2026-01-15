@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Raige Tweak</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="translations.js"></script>
+    <script src="i18n.js" defer></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .legal-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            color: #ffffff;
+        }
+        .legal-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .legal-header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        @keyframes legal-title-shine {
+            0% {
+                background-position: 100% 0;
+            }
+            100% {
+                background-position: -100% 0;
+            }
+        }
+        .legal-header p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .legal-content {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 3rem;
+            line-height: 1.8;
+        }
+        .legal-content h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        .legal-content h2:first-child {
+            margin-top: 0;
+        }
+        .legal-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .legal-content p {
+            margin-bottom: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .legal-content ul, .legal-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .legal-content li {
+            margin-bottom: 0.8rem;
+        }
+        .legal-content strong {
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        .back-link:hover {
+            opacity: 0.8;
+        }
+        .last-updated {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        .legal-content a {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            cursor: pointer;
+            display: inline-block;
+            padding: 2px 4px;
+            margin: -2px -4px;
+            transition: all 0.3s ease;
+        }
+        .legal-content a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        .legal-content li a {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+            display: inline-block;
+            min-height: 24px;
+            line-height: 24px;
+        }
+        .legal-content ul[style] li a {
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
+        .legal-content ul[style] li {
+            position: relative;
+            padding: 4px 0;
+        }
+        .legal-content ul[style] li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .legal-content ul[style] li a {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                        <div class="logo-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <h1>Raige Tweak</h1>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home" class="nav-link" data-i18n="navOverview">Overview</a></li>
+                    <li><a href="https://discord.gg/g8WCEbQftH" class="nav-link" target="_blank" rel="noopener noreferrer" data-i18n="navHelp">Help</a></li>
+                    <li><a href="index.html#pricing" class="nav-link" data-i18n="navPricing">Pricing</a></li>
+                    <li><a href="index.html#reviews" class="nav-link" data-i18n="navReviews">Reviews</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="legal-container">
+        <div class="legal-header">
+            <h1 style="background: linear-gradient(120deg, rgba(255, 255, 255, 0.55) 40%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0.55) 60%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: legal-title-shine 2.5s linear infinite;">Terms of Service</h1>
+            <p>Rules and guidelines for using Raige Tweak</p>
+        </div>
+
+        <div class="legal-content">
+            <p><strong>Last Updated:</strong> <span id="lastUpdated"></span></p>
+
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing and using Raige Tweak software and services, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, you must not use our services.</p>
+
+            <h2>2. Description of Service</h2>
+            <p>Raige Tweak is a system optimization software designed to improve computer performance. The service includes:</p>
+            <ul>
+                <li>System performance optimization</li>
+                <li>Registry and startup optimization</li>
+                <li>System cleaning and maintenance</li>
+                <li>Memory and network enhancement</li>
+            </ul>
+
+            <h2>3. User Accounts</h2>
+            <h3>3.1 Account Creation</h3>
+            <p>To use certain features, you must create an account. You agree to:</p>
+            <ul>
+                <li>Provide accurate and complete information</li>
+                <li>Maintain the security of your account credentials</li>
+                <li>Notify us immediately of any unauthorized access</li>
+                <li>Be responsible for all activities under your account</li>
+            </ul>
+
+            <h3>3.2 Account Termination</h3>
+            <p>We reserve the right to suspend or terminate accounts that violate these terms or engage in fraudulent activity.</p>
+
+            <h2>4. License and Usage</h2>
+            <h3>4.1 License Grant</h3>
+            <p>Subject to your compliance with these terms, we grant you a limited, non-exclusive, non-transferable license to use Raige Tweak for personal or commercial use.</p>
+
+            <h3>4.2 Restrictions</h3>
+            <p>You may not:</p>
+            <ul>
+                <li>Copy, modify, or distribute the software</li>
+                <li>Reverse engineer or decompile the software</li>
+                <li>Share license keys with others</li>
+                <li>Use the software for illegal purposes</li>
+                <li>Remove or alter copyright notices</li>
+            </ul>
+
+            <h2>5. Payment Terms</h2>
+            <p>All purchases are processed through secure payment providers. By making a purchase, you agree to:</p>
+            <ul>
+                <li>Pay all applicable fees</li>
+                <li>Provide accurate payment information</li>
+                <li>Authorize us to charge your payment method</li>
+            </ul>
+            <p>All sales are final unless otherwise stated in our Refund Policy.</p>
+
+            <h2>6. Intellectual Property</h2>
+            <p>Raige Tweak and all related content, including but not limited to software, graphics, logos, and text, are the property of Raige Tweak and are protected by copyright and other intellectual property laws.</p>
+
+            <h2>7. User Conduct</h2>
+            <p>You agree not to:</p>
+            <ul>
+                <li>Use the service for any unlawful purpose</li>
+                <li>Interfere with or disrupt the service</li>
+                <li>Attempt to gain unauthorized access to our systems</li>
+                <li>Transmit viruses or malicious code</li>
+                <li>Impersonate others or provide false information</li>
+            </ul>
+
+            <h2>8. Disclaimers</h2>
+            <p>THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. We do not guarantee that the software will be error-free or that it will meet your specific requirements.</p>
+
+            <h2>9. Limitation of Liability</h2>
+            <p>To the maximum extent permitted by law, Raige Tweak shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the software.</p>
+
+            <h2>10. Indemnification</h2>
+            <p>You agree to indemnify and hold harmless Raige Tweak from any claims, damages, or expenses arising from your use of the service or violation of these terms.</p>
+
+            <h2>11. Modifications to Terms</h2>
+            <p>We reserve the right to modify these terms at any time. Continued use of the service after changes constitutes acceptance of the modified terms.</p>
+
+            <h2>12. Governing Law</h2>
+            <p>These terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law provisions.</p>
+
+            <h2>13. Contact Information</h2>
+            <p>For questions about these Terms of Service, please contact us at:</p>
+            <p><strong>Email:</strong> support@raigetweak.com</p>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+                <p style="margin-bottom: 1rem;"><strong>Related Documents:</strong></p>
+                <ul style="list-style: none; margin-left: 0;">
+                    <li style="margin-bottom: 0.5rem;"><a href="legal.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">← Legal Information</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="privacy-policy.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">Privacy Policy</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="refund-policy.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">Refund Policy</a></li>
+                    <li style="margin-bottom: 0.5rem;"><a href="license-agreement.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">License Agreement</a></li>
+                    <li style="margin-top: 1rem;"><a href="index.html" data-no-smooth="true" style="color: #ff0000; text-decoration: none; cursor: pointer; display: inline-block; padding: 4px 0;">← Back to Home</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="last-updated">
+            Last updated: <span id="lastUpdatedFooter"></span>
+        </div>
+    </div>
+
+    <script>
+        const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        document.getElementById('lastUpdated').textContent = date;
+        document.getElementById('lastUpdatedFooter').textContent = date;
+    </script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <script>
+      // ✅ Lenis Smooth Scrolling (activation)
+      window.addEventListener("load", () => {
+        const lenis = new Lenis({
+          duration: 1.2,
+          smoothWheel: true,
+          smoothTouch: false,
+          wheelMultiplier: 1
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // ✅ Smooth scroll sur les ancres (#home, #pricing, etc.)
+        document.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener("click", (e) => {
+            const id = a.getAttribute("href");
+            if (!id || id === "#") return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            lenis.scrollTo(target);
+          });
+        });
+      });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
+
